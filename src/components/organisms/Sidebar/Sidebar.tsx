@@ -4,6 +4,7 @@ import { RiTodoLine as TodoIcon } from 'react-icons/ri';
 import { FiLogIn as LogInIcon } from 'react-icons/fi';
 import { FiLogOut as LogOutIcon } from 'react-icons/fi';
 import { MdKeyboardArrowRight as ArrowIcon } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 
 const links = [
     {
@@ -36,13 +37,12 @@ const Sidebar = () => {
                         <RocketIcon />
                         <p className="ml-2">Productivity</p>
                     </li>
-
-                    {links.map(({ name, link, icon }) => (
-                        <li>
-                            <a href={link} className="flex items-center py-2 my-2">
+                    {links.map(({ name, link, icon }, index) => (
+                        <li key={index}>
+                            <Link to={link} className="flex items-center py-2 my-2">
                                 <span className="mr-2">{icon}</span>
                                 {name}
-                            </a>
+                            </Link>
                         </li>
                     ))}
 
