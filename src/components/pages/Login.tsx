@@ -1,5 +1,6 @@
 import { Formik, Form, Field, FormikHelpers, ErrorMessage } from 'formik';
 import { loginSchema } from '../../schema/account';
+import useAuth from '../../hooks/useAuth';
 
 interface IUser {
     email: string;
@@ -7,12 +8,15 @@ interface IUser {
 }
 
 const Login = () => {
+    const { signIn } = useAuth();
+
     const initialValues: IUser = {
         email: '',
         password: '',
     };
 
     const handleSubmit = (values: IUser, actions: FormikHelpers<IUser>) => {
+        signIn(values.email, values.password);
         actions.resetForm();
     };
 

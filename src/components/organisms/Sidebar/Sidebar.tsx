@@ -5,6 +5,7 @@ import { FiLogIn as LogInIcon } from 'react-icons/fi';
 import { FiLogOut as LogOutIcon } from 'react-icons/fi';
 import { MdKeyboardArrowRight as ArrowIcon } from 'react-icons/md';
 import { Link } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 
 const links = [
     {
@@ -16,6 +17,8 @@ const links = [
 
 const Sidebar = () => {
     const [isOpen, setIsOpen] = useState(true);
+    const { signOut } = useAuth();
+
     const handleSidebar = () => setIsOpen((prev) => !prev);
 
     return (
@@ -47,9 +50,9 @@ const Sidebar = () => {
                     ))}
 
                     <li className="absolute bottom-6 flex items-center py-2">
-                        <LogInIcon />
-                        <a href="/" className="ml-2">
-                            Sign in
+                        <LogOutIcon />
+                        <a href="/" className="ml-2" onClick={signOut}>
+                            Sign out
                         </a>
                     </li>
                 </ul>

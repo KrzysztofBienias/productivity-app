@@ -8,6 +8,8 @@ interface IUser {
 }
 
 const Register = () => {
+    const { signUp } = useAuth();
+
     const initialValues: IUser = {
         email: '',
         password: '',
@@ -15,6 +17,7 @@ const Register = () => {
     };
 
     const handleSubmit = (values: IUser, actions: FormikHelpers<IUser>) => {
+        signUp(values.email, values.password);
         actions.resetForm();
     };
 
