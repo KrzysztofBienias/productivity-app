@@ -1,4 +1,6 @@
 import { Formik, Form, Field, FormikHelpers, ErrorMessage } from 'formik';
+import { Link } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 import { registerSchema } from '../../schema/account';
 
 interface IUser {
@@ -90,7 +92,9 @@ const Register = () => {
 
                 <p className="mt-2">
                     Already have an account?
+                    <Link to="/login" className="pl-4 py-2">
                         Log in
+                    </Link>
                 </p>
             </div>
         </div>

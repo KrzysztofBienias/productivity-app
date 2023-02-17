@@ -1,4 +1,5 @@
 import { Formik, Form, Field, FormikHelpers, ErrorMessage } from 'formik';
+import { Link } from 'react-router-dom';
 import { loginSchema } from '../../schema/account';
 import useAuth from '../../hooks/useAuth';
 
@@ -67,7 +68,9 @@ const Login = () => {
 
                 <p className="mt-2">
                     Need an account?
+                    <Link to="/register" className="pl-4 py-2">
                         Sign up
+                    </Link>
                 </p>
             </div>
         </div>
