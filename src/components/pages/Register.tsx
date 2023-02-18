@@ -2,6 +2,7 @@ import { Formik, Form, Field, FormikHelpers, ErrorMessage } from 'formik';
 import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import { registerSchema } from '../../schema/account';
+import LoginTemplate from '../templates/LoginTemplate';
 
 interface IUser {
     email: string;
@@ -24,7 +25,7 @@ const Register = () => {
     };
 
     return (
-        <div className="background-gradient w-screen h-screen flex justify-center items-center">
+        <LoginTemplate>
             <div className="glass px-4 p-8 pb-2 sm:px-6 md:px-6 md:pt-10 md:pb-4 2xl:p-8">
                 <h1 className="text-center pb-2 text-2xl md:text-3xl 2xl:text-3xl">Register</h1>
 
@@ -97,7 +98,7 @@ const Register = () => {
                     </Link>
                 </p>
             </div>
-        </div>
+        </LoginTemplate>
     );
 };
 
