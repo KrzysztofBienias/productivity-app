@@ -37,6 +37,7 @@ const Register = () => {
                 >
                     {({ errors, touched, handleBlur, isValid, dirty }) => {
                         return (
+                            <Form className="flex flex-col items-center">
                                 <FormInput
                                     name="Email"
                                     placeholder="Enter your email"
@@ -62,9 +63,9 @@ const Register = () => {
                                     touched={touched.confirmPassword}
                                 />
                                 <button
-                                    disabled={!(isValid && dirty)}
+                                    disabled={!isValid}
                                     type="submit"
-                                    className={`glass px-4 py-1 mt-8 mb-2 ${
+                                    className={`glass px-14 py-3 mt-8 mb-2 rounded-full focus:outline-none focus:ring focus:ring-blue-300 ${
                                         isValid && dirty ? 'opacity-100 cursor-pointer' : 'opacity-30 cursor-not-allowed'
                                     }`}
                                 >
@@ -75,9 +76,9 @@ const Register = () => {
                     }}
                 </Formik>
 
-                <p className="mt-2">
+                <p className="mt-2 text-center">
                     Already have an account?
-                    <Link to="/login" className="pl-4 py-2">
+                    <Link to="/login" className="pl-2 py-2">
                         Log in
                     </Link>
                 </p>

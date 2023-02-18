@@ -1,4 +1,4 @@
-import { Formik, Form, Field, FormikHelpers, ErrorMessage } from 'formik';
+import { Formik, Form, FormikHelpers } from 'formik';
 import { Link } from 'react-router-dom';
 import { loginSchema } from '../../schema/account';
 import useAuth from '../../hooks/useAuth';
@@ -35,6 +35,7 @@ const Login = () => {
                 >
                     {({ handleBlur }) => {
                         return (
+                            <Form className="flex flex-col items-center">
                                 <FormInput name="Email" placeholder="Enter your email" handleBlur={handleBlur} />
                                 <FormInput
                                     name="Password"
@@ -43,7 +44,10 @@ const Login = () => {
                                     handleBlur={handleBlur}
                                 />
 
-                                <button type="submit" className="glass px-4 py-1 mt-8 mb-2">
+                                <button
+                                    type="submit"
+                                    className="glass px-14 py-3 mt-8 mb-2 rounded-full focus:outline-none focus:ring focus:ring-blue-300"
+                                >
                                     Submit
                                 </button>
                             </Form>
@@ -51,9 +55,9 @@ const Login = () => {
                     }}
                 </Formik>
 
-                <p className="mt-2">
+                <p className="mt-2 text-center">
                     Need an account?
-                    <Link to="/register" className="pl-4 py-2">
+                    <Link to="/register" className="pl-2 py-2">
                         Sign up
                     </Link>
                 </p>
