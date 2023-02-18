@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import { registerSchema } from '../../schema/account';
 import LoginTemplate from '../templates/LoginTemplate';
+import FormInput from '../molecules/FormInput/FormInput';
 
 interface IUser {
     email: string;
@@ -36,47 +37,30 @@ const Register = () => {
                 >
                     {({ errors, touched, handleBlur, isValid, dirty }) => {
                         return (
-                            <Form className="flex flex-col">
-                                <label htmlFor="email" className="pt-2  md:pt-4">
-                                    Email
-                                </label>
-                                <Field
-                                    type="text"
-                                    name="email"
+                                <FormInput
+                                    name="Email"
                                     placeholder="Enter your email"
-                                    onBlur={handleBlur}
-                                    className={`glass px-4 py-1 ${errors.email && touched.email && 'border border-red-500'}`}
+                                    handleBlur={handleBlur}
+                                    error={errors.email}
+                                    touched={touched.email}
                                 />
-                                <ErrorMessage name="email" component="span" className="text-red-500 text-sm" />
-
-                                <label htmlFor="password" className="pt-2 md:pt-4">
-                                    Password
-                                </label>
-                                <Field
+                                <FormInput
+                                    name="Password"
                                     type="password"
-                                    name="password"
                                     placeholder="Enter your password"
-                                    onBlur={handleBlur}
-                                    className={`glass px-4 py-1 ${
-                                        errors.password && touched.password && 'border border-red-500'
-                                    }`}
+                                    handleBlur={handleBlur}
+                                    error={errors.password}
+                                    touched={touched.password}
                                 />
-                                <ErrorMessage name="password" component="span" className="text-red-500 text-sm" />
-
-                                <label htmlFor="confirmPassword" className="pt-2 md:pt-4">
-                                    Confirm password
-                                </label>
-                                <Field
+                                <FormInput
+                                    name="Confirm password"
+                                    htmlFor="confirmPassword"
                                     type="password"
-                                    name="confirmPassword"
                                     placeholder="Confirm your password"
-                                    onBlur={handleBlur}
-                                    className={`glass px-4 py-1 ${
-                                        errors.confirmPassword && touched.confirmPassword && 'border border-red-500'
-                                    }`}
+                                    handleBlur={handleBlur}
+                                    error={errors.confirmPassword}
+                                    touched={touched.confirmPassword}
                                 />
-                                <ErrorMessage name="confirmPassword" component="span" className="text-red-500 text-sm" />
-
                                 <button
                                     disabled={!(isValid && dirty)}
                                     type="submit"

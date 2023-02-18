@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { loginSchema } from '../../schema/account';
 import useAuth from '../../hooks/useAuth';
 import LoginTemplate from '../templates/LoginTemplate';
+import FormInput from '../molecules/FormInput/FormInput';
 
 interface IUser {
     email: string;
@@ -34,30 +35,13 @@ const Login = () => {
                 >
                     {({ handleBlur }) => {
                         return (
-                            <Form className="flex flex-col">
-                                <label htmlFor="email" className="pt-2 md:pt-4">
-                                    Email
-                                </label>
-                                <Field
-                                    type="text"
-                                    name="email"
-                                    placeholder="Enter your email"
-                                    onBlur={handleBlur}
-                                    className="glass px-4 py-1"
-                                />
-                                <ErrorMessage name="email" component="span" className="text-red-500 text-sm" />
-
-                                <label htmlFor="password" className="pt-2 md:pt-4">
-                                    Password
-                                </label>
-                                <Field
+                                <FormInput name="Email" placeholder="Enter your email" handleBlur={handleBlur} />
+                                <FormInput
+                                    name="Password"
                                     type="password"
-                                    name="password"
                                     placeholder="Enter your password"
-                                    onBlur={handleBlur}
-                                    className="glass px-4 py-1"
+                                    handleBlur={handleBlur}
                                 />
-                                <ErrorMessage name="password" component="span" className="text-red-500 text-sm" />
 
                                 <button type="submit" className="glass px-4 py-1 mt-8 mb-2">
                                     Submit
