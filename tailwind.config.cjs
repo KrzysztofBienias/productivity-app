@@ -11,7 +11,22 @@ module.exports = {
             '2xl': '1440px',
             '3xl': '1536px',
         },
-        extend: {},
+        extend: {
+            keyframes: {
+                errorShrink: {
+                    '0%': { transform: 'translateX(-50%) scaleX(1)' },
+                    '100%': { transform: 'translateX(-50%) scaleX(0)' },
+                },
+                errorSlide: {
+                    '0%': { transform: 'translateX(-50%) translateY(500%)' },
+                    '100%': { transform: 'translateX(-50%) translateY(0)' },
+                },
+            },
+            animation: {
+                errorShrink: 'errorShrink 5s 1s linear 1 forwards',
+                errorSlide: 'errorSlide 1s ease-in-out 1 forwards, errorSlide 1s 6s ease-in-out 1 reverse forwards',
+            },
+        },
     },
     plugins: [],
 };
