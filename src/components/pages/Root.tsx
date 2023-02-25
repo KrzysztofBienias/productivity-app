@@ -4,6 +4,8 @@ import Login from './Login';
 import Todo from './Todo';
 import Register from './Register';
 import useAuth from '../../hooks/useAuth';
+import ErrorMessage from '../molecules/ErrorMessage/ErrorMessage';
+import useError from '../../hooks/useError';
 
 const routes = [
     {
@@ -44,8 +46,14 @@ const UnauthenticatedApp = () => {
 
 const Root = () => {
     const { currentUser } = useAuth();
+    const { error } = useError();
 
-    return currentUser ? <AuthenticatedApp /> : <UnauthenticatedApp />;
+    return (
+        <div className="overflow-hidden relative">
+            {error ? <ErrorMessage message={error} /> : null}
+            {currentUser ? <AuthenticatedApp /> : <UnauthenticatedApp />}
+        </div>
+    );
 };
 
 export default Root;

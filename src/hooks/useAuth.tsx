@@ -7,6 +7,7 @@ import {
     signOut as logOut,
 } from 'firebase/auth';
 import { auth } from '../firebase';
+import useError from './useError';
 
 interface IAuthContext {
     currentUser: User | null;
@@ -30,6 +31,7 @@ const AuthContext = createContext<IAuthContext>(initialState);
 
 export const AuthProvider: React.FC<IAuthProvider> = ({ children }) => {
     const [currentUser, setCurrentUser] = useState<User | null>(null);
+    const { dispatchError } = useError();
 
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
@@ -44,8 +46,8 @@ export const AuthProvider: React.FC<IAuthProvider> = ({ children }) => {
             .then((userCredential) => {
                 setCurrentUser(userCredential.user);
             })
-            .catch((error) => {
-                console.warn(error.code, error.message);
+            .catch(() => {
+                dispatchError('Invalid email or password');
             });
     };
 
@@ -54,8 +56,8 @@ export const AuthProvider: React.FC<IAuthProvider> = ({ children }) => {
             .then((userCredential) => {
                 setCurrentUser(userCredential.user);
             })
-            .catch((error) => {
-                console.warn(error.code, error.message);
+            .catch((error: Error) => {
+                dispatchError(error.message);
             });
     };
 
